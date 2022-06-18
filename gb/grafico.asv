@@ -1,0 +1,3 @@
+%%grafico
+load('vento.mat');
+plot(v1(:,1),v(:,2),circle,'color',k)

@@ -1,0 +1,60 @@
+clc;clear;close all;
+z=load ('Mpro2.txt');
+x=z(:,1);%tempos
+y=z(:,2);%ordenada
+
+%%curva obitida do load do arquivo texto
+figure(1);
+plot(x,y)
+grid on;
+hold on;
+title('crescimento de uma cultura de bactéria')
+xlabel('tempo')
+ylabel('micro area')
+
+%%plotar os novos graficos de ajuste de curva
+figure(2);
+subplot(2,2,1)
+grid on;
+hold on;
+p1= polyfit(x,y,1);
+plot(p1);
+title('ajuste de curva do primeiro grau')
+xlabel('tempo')
+ylabel('micro area')
+
+subplot(2,2,2)
+grid on;
+hold on;
+p2= polyfit(x,y,2);
+plot(p2)
+title('ajuste de curva do segundo grau')
+xlabel('tempo')
+ylabel('micro area')
+
+subplot(2,2,3)
+grid on;
+hold on;
+p3= polyfit(x,y,3);
+plot(p3)
+title('ajuste de curva do terceiro grau')
+xlabel('tempo')
+ylabel('micro area')
+
+subplot(2,2,4)
+grid on;
+hold on;
+p4= polyfit(x,y,4);
+plot(p4)
+title('ajuste de curva do quarto grau')
+xlabel('tempo')
+ylabel('micro area')
+
+%%erro entre 4 grau e a curva
+p5=polyval(p4,x);
+errox= y-p5;
+figure(3)
+plot(errox);
+title('erro entre ajuste de 4 grau e real')
+xlabel('tempo')
+ylabel('erro')
